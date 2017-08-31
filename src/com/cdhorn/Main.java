@@ -9,6 +9,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -20,7 +21,14 @@ public class Main {
         String line = rd.readLine();
         System.out.println(line);
         ObjectMapper mapper = new ObjectMapper();
+        StarWars starWars = mapper.readValue(line, StarWars.class);
+        System.out.println(starWars);
+        String name = starWars.getName();
+        System.out.println(name);
+        ArrayList<String> vehicles = starWars.getVehicles();
+        System.out.println(vehicles);
+        System.out.println(vehicles.get(0));
 
-//            HttpClient httpClient = mapper.readValue((JsonParser) entity1, HttpClient.class);
+        System.out.println(mapper.writeValueAsString(starWars));
     }
 }
